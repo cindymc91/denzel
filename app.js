@@ -34,7 +34,11 @@ app.get("/movies/populate", async(request, response) => {
         if(error) {
             return response.status(500).send(error);
         }
-        response.send(result.result);
+        let resp = {
+          total : result.insertedCount
+        };
+
+        response.json(resp);
     });
 });
 
@@ -49,6 +53,27 @@ app.get("/movies", (request, response) => {
     });
 });
 
+app.get("/movies/search", (request, response) => {
+  var metascore = +request.query.metascore;
+  var limit = +request.query.limit;
+  collection.find({metascore:{$gte:metascore}})
+  .limit(limit)
+  .sort({metascore:-1})
+  .toArray((error, result) => {
+      if(error) {
+          return response.status(500).send(error);
+      }
+
+      let resp = {
+        limit : limit,
+        results : result,
+        total : result.length
+      }
+
+      response.send(resp);
+  });
+});
+
 app.get("/movies/:id", (request, response) => {
     collection.findOne({ "id": request.params.id }, (error, result) => {
         if(error) {
@@ -58,11 +83,27 @@ app.get("/movies/:id", (request, response) => {
     });
 });
 
+app.post("/movies/:id", (request, response) => {
+      collection.updateOne({ "id": request.params.id },{$set : {"date": request.body.date , "review": request.body.review}}, (error, result) => {
+        if(error) {
+            return response.status(500).send(error);
+        }
+
+        let resp = {
+          _id : result._id
+        }
+
+        response.send(resp);
+    });
+})
 
 
 
 
 
 
+
+
+//node app.js pour lancer
 
 //--
