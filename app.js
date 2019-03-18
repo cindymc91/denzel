@@ -97,6 +97,29 @@ app.post("/movies/:id", (request, response) => {
     });
 })
 
+//GraphQL part
+const graphqlHTTP = require('express-graphql');
+const {GraphQLSchema} = require('graphql');
+
+const {queryType} = require('./query.js');
+const port = 5000;
+
+// Define the Schema
+const schema = new GraphQLSchema({ query: queryType });
+
+//Setup the nodejs GraphQL server
+app.use('/graphql', graphqlHTTP({
+   schema: schema,
+   graphiql: true,
+}));
+
+app.get('/hello', (req,res) => {
+    res.send("hello");
+   }
+);
+
+app.listen(port);
+console.log(`GraphQL Server Running at localhost:${port}`);
 
 
 
