@@ -9,6 +9,8 @@ const DENZEL_IMDB_ID = 'nm0000243';
 const CONNECTION_URL = "mongodb+srv://cindy_mc:mongoAtlas1606@cluster0-10rpr.mongodb.net/test?retryWrites=true";
 const DATABASE_NAME = "denzel-db";
 
+const port = 9292;
+
 
 
 var app = Express();
@@ -16,7 +18,7 @@ var app = Express();
 app.use(BodyParser.json());
 app.use(BodyParser.urlencoded({ extended: true }));
 
-app.listen(9292, () => {
+app.listen(port, () => {
     MongoClient.connect(CONNECTION_URL, { useNewUrlParser: true }, (error, client) => {
         if(error) {
             throw error;
@@ -30,7 +32,7 @@ app.listen(9292, () => {
 
 app.get("/movies/populate", async(request, response) => {
     const denzel_movies = await imdb(DENZEL_IMDB_ID);
-    collection.insert(denzel_movies, (error, result) => {
+    collection.insertMany(denzel_movies, (error, result) => {
         if(error) {
             return response.status(500).send(error);
         }
@@ -97,12 +99,14 @@ app.post("/movies/:id", (request, response) => {
     });
 })
 
+
+
+
 //GraphQL part
 const graphqlHTTP = require('express-graphql');
 const {GraphQLSchema} = require('graphql');
 
 const {queryType} = require('./query.js');
-const port = 5000;
 
 // Define the Schema
 const schema = new GraphQLSchema({ query: queryType });
@@ -113,12 +117,6 @@ app.use('/graphql', graphqlHTTP({
    graphiql: true,
 }));
 
-app.get('/hello', (req,res) => {
-    res.send("hello");
-   }
-);
-
-app.listen(port);
 console.log(`GraphQL Server Running at localhost:${port}`);
 
 
