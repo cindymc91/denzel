@@ -2,7 +2,7 @@
 
 > The must-watch Denzel's movies
 
-- [Client Side with Glitch]
+## Client Side with Glitch
 
 Here is the link to access the client side of this project :
 https://cindymc91-denzel.glitch.me
