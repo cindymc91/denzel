@@ -78,6 +78,7 @@ const queryType = new GraphQLObjectType({
 
 
   }
+
 });
 
 exports.queryType = queryType;

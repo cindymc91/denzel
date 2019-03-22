@@ -20,7 +20,6 @@ movieType = new GraphQLObjectType({
        title: { type: GraphQLString },
        votes: { type: GraphQLFloat},
        year: { type: GraphQLInt },
-
        date:{type: GraphQLString},
        review:{type:GraphQLString}
 
