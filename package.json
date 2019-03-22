@@ -12,5 +12,9 @@
     "node-fetch": "^2.3.0",
     "p-limit": "^2.2.0",
     "p-settle": "^2.1.0"
+  },
+  "scripts": {
+    "start": "node app.js"
   }
+
 }
