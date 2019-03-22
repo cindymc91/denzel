@@ -117,7 +117,7 @@ app.use('/graphql', graphqlHTTP({
    graphiql: true,
 }));
 
-console.log(`GraphQL Server Running at localhost:${port}`);
+console.log(`GraphQL Server Running on port :${port}`);
 
 
 
