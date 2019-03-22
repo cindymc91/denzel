@@ -2,6 +2,11 @@
 
 > The must-watch Denzel's movies
 
+- [Client Side with Glitch]
+
+Here is the link to access the client side of this project :
+https://cindymc91-denzel.glitch.me
+
 ![denzel](https://m.media-amazon.com/images/M/MV5BMjE5NDU2Mzc3MV5BMl5BanBnXkFtZTcwNjAwNTE5OQ@@._V1_SY1000_SX750_AL_.jpg)
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
@@ -86,7 +91,7 @@ He won 2 Oscars. [Another 82 wins & 166 nominations](https://www.imdb.com/name/n
 * [mongodb](https://www.npmjs.com/package/mongodb) - Mongo DB Native NodeJS Driver
 * [dotenv](https://www.npmjs.com/package/dotenv) - Loads environment variables from .env for nodejs projects
 * [graphql](https://www.npmjs.com/package/graphql) - A reference implementation of GraphQL for JavaScript
-* [nodemon](https://www.npmjs.com/package/nodemon) - Monitor for any changes in your node.js application and automatically restart the server - perfect for development 
+* [nodemon](https://www.npmjs.com/package/nodemon) - Monitor for any changes in your node.js application and automatically restart the server - perfect for development
 
 ### REST endpoints to implement
 
